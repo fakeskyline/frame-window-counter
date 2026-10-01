@@ -43,7 +43,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(slc_repo)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE libGDR GDRconverter)
+target_link_libraries(${PROJECT_NAME} libGDR GDRconverter)
 target_include_directories(${PROJECT_NAME} PRIVATE ${slc_repo_SOURCE_DIR}/include)
 
 setup_geode_mod(${PROJECT_NAME})

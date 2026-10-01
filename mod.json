@@ -13,7 +13,7 @@
   "description": "Frame-window visualization, macro analysis and approximate sigma-per-second precision metrics.",
   "tags": ["utility", "customization"],
   "links": {
-    "source": "https://github.com/ВАШ_ЮЗЕРНЕЙМ/frame-window-counter"
+    "source": "https://github.com/fakeskyline/frame-window-counter"
   },
   "settings": {
     "enabled": {
