@@ -1,0 +1,110 @@
+{
+  "geode": "5.10.1",
+  "gd": {
+    "win": "2.2081",
+    "android": "2.2081",
+    "mac": "2.2081",
+    "ios": "2.2081"
+  },
+  "version": "v1.0.0",
+  "id": "sudosugd.frame-window-counter",
+  "name": "Frame Window Counter",
+  "developer": "SudoSuGD",
+  "description": "Frame-window visualization, macro analysis and approximate sigma-per-second precision metrics.",
+  "tags": ["utility", "customization"],
+  "links": {
+    "source": "https://github.com/ВАШ_ЮЗЕРНЕЙМ/frame-window-counter"
+  },
+  "settings": {
+    "enabled": {
+      "type": "bool",
+      "name": "Enabled",
+      "description": "Enable the Frame Window Counter overlay and hooks.",
+      "default": true
+    },
+    "hud-x": {
+      "type": "int",
+      "name": "HUD X",
+      "description": "Horizontal HUD position in screen points.",
+      "default": 10,
+      "min": 0,
+      "max": 2000,
+      "control": {"input": true, "arrows": true}
+    },
+    "hud-y": {
+      "type": "int",
+      "name": "HUD Y",
+      "description": "Vertical HUD position in screen points.",
+      "default": 10,
+      "min": 0,
+      "max": 2000,
+      "control": {"input": true, "arrows": true}
+    },
+    "font-size": {
+      "type": "float",
+      "name": "Font Size",
+      "description": "HUD label scale.",
+      "default": 0.5,
+      "min": 0.2,
+      "max": 1.5,
+      "control": {"slider": true, "slider-step": 0.05, "input": true}
+    },
+    "show-markers": {
+      "type": "bool",
+      "name": "Show Markers",
+      "description": "Show animated action markers.",
+      "default": true
+    },
+    "sound-fw1": {
+      "type": "string",
+      "name": "FW1 Sound",
+      "description": "Optional absolute or game-search-path sound effect for FW1.",
+      "default": ""
+    },
+    "sound-fw2": {
+      "type": "string",
+      "name": "FW2 Sound",
+      "description": "Optional sound effect for FW2.",
+      "default": ""
+    },
+    "sound-fw3": {
+      "type": "string",
+      "name": "FW3+ Sound",
+      "description": "Optional sound effect for FW3 and above.",
+      "default": ""
+    },
+    "manual-window": {
+      "type": "int",
+      "name": "Manual Window",
+      "description": "Window assigned when Manual Stamp is pressed.",
+      "default": 1,
+      "min": 1,
+      "max": 10,
+      "control": {"slider": true, "input": true, "slider-step": 1}
+    },
+    "manual-stamp": {
+      "type": "keybind",
+      "name": "Manual Stamp Key",
+      "description": "Assign Manual Window to the latest captured action.",
+      "default": "F8"
+    },
+    "reset-key": {
+      "type": "keybind",
+      "name": "Reset Key",
+      "description": "Clear the current run statistics.",
+      "default": "F7"
+    },
+    "import-path": {
+      "type": "string",
+      "name": "Import Path",
+      "description": "Path to a .gdr/.gdr2/.slc/.json/.fwc file. The Manual Import key loads this file.",
+      "default": ""
+    },
+    "import-key": {
+      "type": "keybind",
+      "name": "Import Key",
+      "description": "Load the file specified by Import Path.",
+      "default": "F9"
+    }
+  }
+}
