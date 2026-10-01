@@ -35,15 +35,4 @@ CPMAddPackage(
     OPTIONS "BUILD_TESTING OFF"
 )
 
-# Silicate SLC v2/v3 reader.
-FetchContent_Declare(
-    slc_repo
-    GIT_REPOSITORY https://github.com/silicate-bot/slc.git
-    GIT_TAG main
-)
-FetchContent_MakeAvailable(slc_repo)
-
 target_link_libraries(${PROJECT_NAME} libGDR GDRconverter)
-target_include_directories(${PROJECT_NAME} PRIVATE ${slc_repo_SOURCE_DIR}/include)
-
-setup_geode_mod(${PROJECT_NAME})

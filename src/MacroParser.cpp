@@ -2,7 +2,6 @@
 #include <Geode/Geode.hpp>
 #include <gdr/gdr.hpp>
 #include <gdr_convert.hpp>
-#include <slc/slc.hpp>
 #include <fstream>
 #include <sstream>
 #include <algorithm>
@@ -85,6 +84,8 @@ geode::Result<Result> parse(std::filesystem::path const& path) {
                 bool p2 = item["isPlayer2"].asBool().unwrapOr(false);
                 auto a = makeAction(static_cast<uint64_t>(std::max(0.0, std::floor(time))), p2, true, fw, ++i, out.fps);
                 a.timeSeconds = time / out.fps;
+
+
                 a.inputsPerFrame = std::max(1, item["if"].asInt().unwrapOr(item["swift"].asInt().unwrapOr(0) + 1));
                 out.actions.push_back(a);
             }
@@ -120,20 +121,6 @@ geode::Result<Result> parse(std::filesystem::path const& path) {
                 out.actions.push_back(makeAction(input.frame, input.player2, input.down, 0.0, ++i, out.fps));
             return Ok(out);
         }
-
-        if (ext == ".slc") {
-            std::ifstream f(path, std::ios::binary);
-            if (!f) return Err("Cannot open .slc");
-            auto r = slc::Replay<>::read(f);
-            if (!r) return Err("Failed to parse .slc");
-            auto replay = r.value();
-            out.fps = replay.m_meta.m_tps > 0.0 ? replay.m_meta.m_tps : 240.0;
-            uint32_t i = 0;
-            for (auto const& atom : replay.m_atoms.m_atoms) {
-                if (auto const* actions = std::get_if<slc::ActionAtom>(&atom)) {
-                    for (auto const& action : actions->m_actions) {
-                        if (!action.isPlayer()) continue;
-                        out.actions.push_back(makeAction(action.m_frame, action.m_player2, action.m_holding, 0.0, ++i, out.fps));
                     }
                 }
             }
